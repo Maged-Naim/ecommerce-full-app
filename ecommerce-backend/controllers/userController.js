@@ -2,7 +2,7 @@ import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import asyncHandler from "express-async-handler";
-// Generate JWT
+
 const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: "30d",
@@ -19,7 +19,6 @@ export const registerUser = async (req, res, next) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    //const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
       name,
@@ -77,7 +76,7 @@ export const loginUser = async (req, res, next) => {
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find().select("-password"); // hide passwords
+    const users = await User.find().select("-password"); 
     res.status(200).json(users);
   } catch (error) {
     next(error);

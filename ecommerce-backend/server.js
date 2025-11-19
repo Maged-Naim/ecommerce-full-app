@@ -6,8 +6,6 @@ import connectDB from './config/db.js'
 import productroutes from "./routes/productRoutes.js"
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import morgan from "morgan";
-import Product from "./models/productModel.js";
-import asyncHandler from 'express-async-handler';
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js"
@@ -16,7 +14,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(morgan("dev"));
+app.use(morgan("dev")); 
 
 app.use(cors());
 
@@ -43,12 +41,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes); 
 app.use("/api/cart", cartRoutes)
 app.use(errorHandler);
+ 
 
-export const createProduct = asyncHandler(async (req, res) => {
-  const product = await Product.create(req.body);
-  io.emit("new_product", product);
-  res.status(201).json(product);
-});
 
 const PORT = process.env.PORT || 5000;
 connectDB().then(() => {

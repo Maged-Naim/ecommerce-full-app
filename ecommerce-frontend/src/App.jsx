@@ -18,6 +18,9 @@ import AdminUsersPage from "./Admin/pages/AdminUsersPage";
 import AdminOrdersPage from "./Admin/pages/AdminOrdersPage";
 import RequireAdmin from "./Admin/RequireAdmin";
 import Orders from "./pages/Orders";
+import NotFound from "./pages/NotFound";
+
+
 export default function App() {
     const location = useLocation();
     const isAdminRoute = location.pathname.startsWith("/admin");
@@ -35,7 +38,7 @@ export default function App() {
         <Route path="/contact" element={<Contactus />} />
         <Route path="/about" element={<Aboutus />} />
         <Route path="/orders" element={<Orders />} />
-
+        <Route path="*" element={<NotFound />}/>
         <Route
           path="/cart"
           element={

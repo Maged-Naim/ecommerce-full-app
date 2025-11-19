@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./ecommerce-backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    # environment:
+    #   - MONGO_URI=mongodb://mongo:27017/ecommerce
+    #   - JWT_SECRET=5f830c3db2a4d89f78b30793eeb6b2cf9e8819189994bdacea9c16dc7f6789c90a631f7119f6974e034712610d5da3e8c373911c965f596030638fcb5934b958
+    #   - NODE_ENV=production
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./ecommerce-frontend
+    container_name: frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

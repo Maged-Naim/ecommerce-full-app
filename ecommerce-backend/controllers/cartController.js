@@ -1,7 +1,7 @@
 import Cart from "../models/cartModel.js";
 import Product from "../models/productModel.js";
 
-//Get user cart
+
 export const getCart = async (req, res, next) => {
   try {
     const cart = await Cart.findOne({ user: req.user._id }).populate("items.product", "title price image");
@@ -12,7 +12,7 @@ export const getCart = async (req, res, next) => {
   } 
 };
 
-//Add item to cart
+
 export const addToCart = async (req, res, next) => {
   try {
     const { productId, quantity } = req.body;
@@ -25,7 +25,7 @@ export const addToCart = async (req, res, next) => {
       cart = new Cart({ user: req.user._id, items: [], totalPrice: 0 });
     }
 
-    // Check if product already in cart
+   
     const existingItem = cart.items.find(
       (item) => item.product.toString() === productId
     );
@@ -36,7 +36,6 @@ export const addToCart = async (req, res, next) => {
       cart.items.push({ product: productId, quantity });
     }
 
-    // Recalculate total price
     cart.totalPrice = await calculateTotal(cart.items);
 
     await cart.save();

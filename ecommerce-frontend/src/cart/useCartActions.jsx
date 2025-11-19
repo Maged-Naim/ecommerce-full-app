@@ -6,28 +6,6 @@ function useCartActions() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
-  // const addItem = async (product) => {
-  //   dispatch(addToCart(product));
-  //    console.log("USER ::: ", user);
-  //    console.log("TOKEN FRONTEND ::", user?.token);
-  //   if (!user) return; 
-
-  //   try {  
-  //    const response =  await axios.post(
-  //       "http://localhost:5000/api/cart",
-  //       { productId: product._id, quantity: 1 },
-  //       {
-  //         headers: {
-  //           authorization: `Bearer ${user.token}`,
-  //         },
-  //       }
-  //     );
-  //     console.log("ADDED TO CART:", response.data);
-
-  //   } catch (err) {
-  //         console.log("Error adding to cart:", err.response?.data);
-  //   }
-  // };
 const addItem = async (product, quantity = 1) => {
   dispatch(
     addToCart({

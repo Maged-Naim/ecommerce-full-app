@@ -47,7 +47,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 px-4">
       <div className="flex flex-col lg:flex-row bg-gray-800 rounded-3xl shadow-2xl overflow-hidden w-full max-w-4xl">
-        {/* IMAGE */}
+      
         <div className="lg:w-1/2 hidden lg:block">
           <img
             src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=80"
@@ -56,7 +56,7 @@ export default function Login() {
           />
         </div>
 
-        {/* FORM */}
+      
         <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center">
           <h1 className="text-4xl font-bold text-white mb-6 text-center">
             Welcome Back

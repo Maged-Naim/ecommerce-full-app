@@ -2,11 +2,6 @@ import Product from "../models/productModel.js";
 import asyncHandler from "express-async-handler";
 
 
-// export const getProducts = asyncHandler(async (req, res) => {
-//   const products = await Product.find();
-//   res.json(products);
-// });
-
 export const getProducts = async (req, res, next) => {
   try {
     const pageSize = 5; 
@@ -23,9 +18,7 @@ export const getProducts = async (req, res, next) => {
     const count = await Product.countDocuments({ ...keyword });
 
     const products = await Product.find({ ...keyword })
-      // .limit(pageSize)
-      // .skip(pageSize * (page - 1));
-
+  
     
     res.json({
       products,
@@ -53,6 +46,7 @@ export const createProduct = asyncHandler(async (req, res) => {
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
 });
+
 
 
 export const updateProduct = asyncHandler(async (req, res) => {

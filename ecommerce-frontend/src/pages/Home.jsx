@@ -52,20 +52,6 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      {/* <section className="h-[90vh] w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-cover bg-center bg-[url(https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-no-repeat">
-        <div className="relative z-10 h-full flex flex-col justify-center items-center text-left text-white px-4">
-          <h2 className="text-4xl font-bold mb-4">Discover Your Style</h2>
-          <p className="text-lg mb-6">
-            shop the latest trends with our exclusive collection
-          </p>
-          <a
-            href="/products"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Shop Now
-          </a>
-        </div>
-      </section> */}
       <section className="w-full h-[80vh]">
         <Swiper
           modules={[Autoplay]}
