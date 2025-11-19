@@ -16,10 +16,6 @@ services:
       - "5000:5000"
     env_file:
       - .env
-    # environment:
-    #   - MONGO_URI=mongodb://mongo:27017/ecommerce
-    #   - JWT_SECRET=5f830c3db2a4d89f78b30793eeb6b2cf9e8819189994bdacea9c16dc7f6789c90a631f7119f6974e034712610d5da3e8c373911c965f596030638fcb5934b958
-    #   - NODE_ENV=production
     depends_on:
       - mongo
 
@@ -27,7 +23,7 @@ services:
     build: ./ecommerce-frontend
     container_name: frontend
     ports:
-      - "5173:80"
+      - "5173:3000"
     depends_on:
       - backend
 
