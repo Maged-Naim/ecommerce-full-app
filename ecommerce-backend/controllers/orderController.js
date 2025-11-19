@@ -66,6 +66,7 @@ export const getMyOrders = async (req, res, next) => {
   }
 };
 
+
 export const getAllOrders = async (req, res, next) => {
   try {
     const orders = await Order.find()
@@ -80,6 +81,8 @@ export const getAllOrders = async (req, res, next) => {
     next(error);
   }
 };
+
+
 
 export const updateOrderStatus = async (req, res, next) => {
   try {
@@ -100,4 +103,24 @@ export const updateOrderStatus = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};  
+
+export const deleteOrder = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const order = await Order.findById(id);
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    await order.deleteOne();
+
+    res.json({ message: "Order deleted successfully" });
+
+  } catch (error) {
+    next(error);
+  }
 };
+

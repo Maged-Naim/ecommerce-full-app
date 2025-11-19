@@ -13,7 +13,7 @@ export default function AdminProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
- 
+      
   const fetchProducts = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/products");
@@ -212,7 +212,7 @@ export default function AdminProductsPage() {
 
       
       {isOpen && selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center">
           <div className="bg-white w-full max-w-lg p-6 rounded shadow-lg">
             <h2 className="text-2xl font-bold mb-4 text-center">
               Edit Product
@@ -283,7 +283,7 @@ export default function AdminProductsPage() {
 
       
       {addOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center">
           <div className="bg-white w-full max-w-lg p-6 rounded shadow-lg">
             <h2 className="text-2xl font-bold mb-4 text-center">
               Add New Product
